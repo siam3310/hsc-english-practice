@@ -67,7 +67,7 @@ export const generateQuestion = async (topicId: TopicId, mode: PracticeModeType,
         responseMimeType: "application/json",
         responseSchema: questionSchema,
         thinkingConfig: { thinkingBudget: 0 },
-        maxOutputTokens: 2500, 
+        maxOutputTokens: 25500, 
       },
     });
 
@@ -97,7 +97,7 @@ export const generateQuestion = async (topicId: TopicId, mode: PracticeModeType,
       topicId,
       mode,
       difficulty,
-      questionText: "Error loading question. Please try again.",
+      questionText: "Error, Refresh!",
       instruction: "Error",
       gaps: [],
       answerKey: {}
@@ -163,7 +163,7 @@ const evaluateLocally = (question: PracticeQuestion, userAnswers: Record<string,
 const evaluateWithAI = async (question: PracticeQuestion, userAnswers: Record<string, string>): Promise<EvaluationResult> => {
     try {
         const prompt = `
-          Act as a strict HSC English Teacher (Bangladesh).
+          Act as a strict HSC English Teacher (Bangladeshi).
           Question: "${question.questionText}"
           Instruction: "${question.instruction}"
           Topic: ${question.topicId}
@@ -244,7 +244,7 @@ function getPromptForTopicAndMode(topicId: TopicId, mode: PracticeModeType): str
   switch (topicId) {
     case TopicId.VERBS:
       return isPassage
-        ? "Provide a complete 'Right Form of Verbs' passage from a past **HSC Board Exam** (e.g., Dhaka Board 2019, Rajshahi Board 2022). Format: '...word (verb)...'. It must be a narrative text or factual report."
+        ? "Provide a complete 'Right Form of Verbs' passage from a past **HSC Board Exam** (e.g., Dhaka Board 2019, Rajshahi Board 2022) or other from internet. Format: '...word (verb)...'. It must be a narrative text or factual report."
         : "Provide a single challenging sentence question from a **University Admission Test** (Unit B/C) regarding Right Form of Verbs. Format: '...(base-verb)...'.";
     
     case TopicId.ARTICLES:
