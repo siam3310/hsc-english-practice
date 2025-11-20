@@ -244,18 +244,18 @@ function getPromptForTopicAndMode(topicId: TopicId, mode: PracticeModeType): str
   switch (topicId) {
     case TopicId.VERBS:
       return isPassage
-        ? "Provide a complete 'Right Form of Verbs' passage from a past **HSC Board Exam** (e.g., Dhaka Board 2019, Rajshahi Board 2022). Format: '...word [1] (verb)...'. It must be a narrative text or factual report."
-        : "Provide a single challenging sentence question from a **University Admission Test** (Unit B/C) regarding Right Form of Verbs. Format: '...[1] (base-verb)...'.";
+        ? "Provide a complete 'Right Form of Verbs' passage from a past **HSC Board Exam** (e.g., Dhaka Board 2019, Rajshahi Board 2022). Format: '...word (verb)...'. It must be a narrative text or factual report."
+        : "Provide a single challenging sentence question from a **University Admission Test** (Unit B/C) regarding Right Form of Verbs. Format: '...(base-verb)...'.";
     
     case TopicId.ARTICLES:
       return isPassage
-        ? "Provide a standard **HSC Board Question** passage with 6-10 article gaps. Format: '...[1]...'. Answer 'x' if none."
-        : "Provide a tricky sentence from an **Admission Test** with one article gap '[1]'.";
+        ? "Provide a standard **HSC Board Question** passage with 6-10 article gaps. Format: '...__...'. Answer 'x' if none."
+        : "Provide a tricky sentence from an **Admission Test** with one article gap '...__...'.";
     
     case TopicId.PREPOSITION:
       return isPassage
-        ? "Provide a passage on Appropriate Prepositions from a past **HSC Board Exam**. Format: '...word [1]...'. This is Question No. 2 in HSC exams."
-        : "Provide a single sentence with a challenging Appropriate Preposition gap '[1]...' typical of **University Admission Tests**.";
+        ? "Provide a passage on Appropriate Prepositions from a past **HSC Board Exam**. Format: '...word __...'. This is Question No. 2 in HSC exams."
+        : "Provide a single sentence with a challenging Appropriate Preposition gap '__...' typical of **University Admission Tests**.";
 
     case TopicId.COMPLETING:
       return "Provide a standard **HSC Completing Sentence** question (Question No. 4 style). Start with a clause, leave the rest blank marked as '[1]'. Example: 'Had I been a king, [1].' The completion must follow strict grammar rules.";
