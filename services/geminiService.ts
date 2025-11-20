@@ -10,7 +10,7 @@ const questionSchema: Schema = {
   properties: {
     questionText: {
       type: Type.STRING,
-      description: "The content. For passage/gap-fills, use '...word [1] (verb)...'. For Transformation/Voice, provide ONLY the sentence to change.",
+      description: "The content. For gap-fills like Right Form of Verbs, the format is '...(verb)...'. Do not include numbers in the question text's gaps. For Transformation/Voice, provide ONLY the sentence to change.",
     },
     instruction: {
       type: Type.STRING,
@@ -122,7 +122,7 @@ export const checkAnswer = async (
 const evaluateLocally = (question: PracticeQuestion, userAnswers: Record<string, string>): EvaluationResult => {
     const details: Record<string, any> = {};
     let correctCount = 0;
-    const total = question.gaps ? question.gaps.length : 1;
+    const total = question.gaps ? question.gaphs.length : 1;
     const key = question.answerKey || {};
 
     const keysToCheck = question.gaps ? question.gaps.map(String) : ['main'];
