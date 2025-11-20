@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect, useRef } from 'react';
 import { generateQuestion, checkAnswer } from '../services/geminiService';
 import { PracticeQuestion, EvaluationResult, TopicId, PracticeModeType, DifficultyLevel } from '../types';
@@ -153,10 +152,9 @@ const PracticeMode: React.FC<PracticeModeProps> = ({ topicId, onBack }) => {
         return (
             <div className={`font-serif text-zinc-300 text-center ${mode === PracticeModeType.PASSAGE ? 'text-lg leading-[3rem]' : 'text-2xl leading-[4rem]'}`}>
                 {parts.map((part, idx) => {
-                    const match = part.match(/\[(\d+)\](?: \(([^)]+)\))?/);
+                    const match = part.match(/\[(\d+)\](?: \([^)]+\))?/);
                     if (match) {
                         const id = match[1];
-                        const hint = match[2]; 
                         const isEvaluated = result && result.details && result.details[id];
                         const isCorrect = isEvaluated?.isCorrect;
                         
@@ -181,7 +179,6 @@ const PracticeMode: React.FC<PracticeModeProps> = ({ topicId, onBack }) => {
 
                         return (
                             <span key={idx} className="relative inline-block mx-1 group align-baseline">
-                                <span className="absolute -top-7 left-0 w-full text-center text-[10px] font-mono text-zinc-500 pointer-events-none select-none">{id}</span>
                                 <div className="relative inline-block">
                                     <input
                                         ref={(el) => { inputRefs.current[id] = el; }}
@@ -190,7 +187,7 @@ const PracticeMode: React.FC<PracticeModeProps> = ({ topicId, onBack }) => {
                                         onChange={(e) => handleAnswerChange(id, e.target.value)}
                                         className={inputClass}
                                         autoComplete="off"
-                                        placeholder={hint || ''}
+                                        placeholder={userAnswers[id] ? '' : id}
                                         readOnly={!!result}
                                     />
                                     {/* Inline Correct Answer Badge (Next to input) */}
