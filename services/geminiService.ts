@@ -255,7 +255,7 @@ function getPromptForTopicAndMode(topicId: TopicId, mode: PracticeModeType): str
     case TopicId.PREPOSITION:
       return isPassage
         ? "Provide a passage on Appropriate Prepositions from a past **HSC Board Exam**. Format: '...word [1]...'. This is Question No. 2 in HSC exams."
-        : "Provide a single sentence with a challenging Appropriate Preposition gap '[1]' typical of **University Admission Tests**.";
+        : "Provide a single sentence with a challenging Appropriate Preposition gap '[1]...' typical of **University Admission Tests**.";
 
     case TopicId.COMPLETING:
       return "Provide a standard **HSC Completing Sentence** question (Question No. 4 style). Start with a clause, leave the rest blank marked as '[1]'. Example: 'Had I been a king, [1].' The completion must follow strict grammar rules.";
